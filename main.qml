@@ -25,10 +25,10 @@ ApplicationWindow {
         anchors.fill: parent
      }
 
-    // Open file button
+    // Open video button
     Button {
-        anchors.bottom: controlsRow.top
-        text: "Open File"
+        anchors.bottom: mainWindow.top
+        text: "Open Video"
         onClicked: fileDialog.open()
     }
 
