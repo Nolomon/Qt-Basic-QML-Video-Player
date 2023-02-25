@@ -10,6 +10,13 @@ ApplicationWindow {
     height: 480
     title: "Video Player"
 
+    function msToDuration(milliseconds) {
+        var hours = Math.floor(milliseconds / (60 * 60 * 1000))
+        var minutes = Math.floor((milliseconds % (60 * 60 * 1000)) / (60 * 1000))
+        var seconds = Math.floor((milliseconds % (60 * 1000)) / 1000)
+        return hours + ":" + minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0')
+    }
+
     // Video player
     MediaPlayer {
         id: mediaPlayer
@@ -65,13 +72,13 @@ ApplicationWindow {
 
         // Current progress
         Label {
-            text: mediaPlayer.duration > 0 ? Qt.formatDateTime(new Date(mediaPlayer.position), "hh:mm:ss") : "--:--:--"
+            text: mediaPlayer.duration > 0 ? msToDuration(mediaPlayer.position) : "--:--:--"
             font.pointSize: 12
         }
 
         // Total Duraion
         Label {
-            text: mediaPlayer.duration > 0 ? Qt.formatDateTime(new Date(mediaPlayer.duration), "hh:mm:ss") : "--:--:--"
+            text: mediaPlayer.duration > 0 ? msToDuration(mediaPlayer.duration) : "--:--:--"
             font.pointSize: 12
         }
 
