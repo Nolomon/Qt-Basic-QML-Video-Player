@@ -85,6 +85,8 @@ ApplicationWindow {
         onAccepted: {
             mediaPlayer.source = fileDialog.selectedFile
             mediaPlayer.position = 0
+            progressSlider.value = 0
+            mediaPlayer.play()
             console.log(mediaPlayer.source)
         }
         onRejected: {
